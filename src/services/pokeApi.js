@@ -11,7 +11,8 @@ const PokeApi = {
     .then(response => response.json())
     .then(response => response.pokemon)
     .then(pkmList => {
-      return pkmList.map(pokemon => {
+      return pkmList
+      .map(pokemon => {
         pokemon.number = this.getNumberFromURL(pokemon.resource_uri);
         return pokemon;
       })
@@ -25,7 +26,7 @@ const PokeApi = {
     .then(pkmList => {
       this.pkmList = pkmList;
       return pkmList;
-    })
+    });
   },
   getPkm: (pkm) => {
     return fetch(`${URL_API}/pokemon/${pkm.number}`)

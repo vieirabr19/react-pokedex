@@ -12,7 +12,7 @@ function PokeInfo() {
 
   useEffect(() => {
     getPkm();
-
+    console.log('UseEffect');
     // PokeApi.getPkm(pokeNumber).then(pkm => {
     //   setPkm({
     //     name: pkm.name,
@@ -27,7 +27,7 @@ function PokeInfo() {
     //     }
     //   });
     // });
-  });
+  }, [pokeNumber]);
 
   const getPkm = () => {
     if(PokeApi.pkmList.length){
@@ -52,8 +52,8 @@ function PokeInfo() {
       <Link to='/' className='back-button'>&lt;</Link>
 
       <div className='poke-profile'>
-        <div>#{pkmList.number} - {pkmList.name}</div>
-        <img className='poke-sprite' src={`//serebii.net/sunmoon/pokemon/${pkmList?.number}.png`} alt={pkmList.name} />
+        <div><strong>#{pkmList.number} - {pkmList.name}</strong></div>
+        {pkmList.number && <img className='poke-sprite' src={`//serebii.net/sunmoon/pokemon/${pkmList.number}.png`} alt={pkmList.name} />}
       </div>
 
       <ul className='poke-types'>
